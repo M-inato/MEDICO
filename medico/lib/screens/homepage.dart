@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
@@ -6,12 +8,14 @@ import 'package:http/http.dart' as http;
 import 'package:medico/screens/loginpage.dart';
 import 'package:medico/screens/profilepage.dart';
 import 'package:medico/screens/settings.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'NotificationPage.dart';
 import 'historypage.dart';
 import 'models.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'profilepage.dart';
+import 'package:medico/screens/loginpage.dart';
 
 class ChatMessage {
   final String text;
@@ -36,7 +40,6 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
 class _HomePageState extends State<HomePage> {
   final List<ChatMessage> _messages = []; // Current chat session (displayed)
   final List<ChatMessage> _currentChatHistory = []; // Current session history
